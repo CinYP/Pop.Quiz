@@ -75,6 +75,7 @@ margin: 25px 0;
 font-weight:bold;
 border: var(--natural);
 padding: 15px 25px;
+margin: 5px;
 }
 
 .start-btn:hover, .nxt-btn:hover{
@@ -84,7 +85,7 @@ padding: 15px 25px;
 
 .controls {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
 }
 
