@@ -1,46 +1,71 @@
 //DOM Elements 
-var startButton = document.getElementById('start-button');
-var nextButton = document.querySelector('nxt-btn');
-var questionContainerEl = document.getElementById('question-container');
-var answerButtonsEl = document.getElementById('answer-buttons')
-var questionEl = document.getElementById('question')
+let startButton = document.getElementById('start-button');
+let nextButton = document.getElementById('next-button');
+let questionContainerEl = document.getElementById('question-container');
+let answerButtonsEl = document.getElementById('answer-buttons');
+let questionEl = document.getElementById('question');
+let timeEl = document.querySelector("timer");
 
-let shuffledQuestions, currentQuestionIndex 
 
 //This is the event listener for the start button 
 startButton.addEventListener('click', startGame)
 
 
 //This function will start the game 
-function startGame() {
+function startGame(event) {
 
 startButton.classList.add('hide')
 questionContainerEl.classList.remove('hide')
 
-shuffledQuestions = gameQuestions.sort(() => Math.random() - .5)
-currentQuestionIndex = 0
+ let shuffledQuestions = questions.sort()
+ let currentQuestionIndex = ""; 
 
-forNextQuestion()
-console.log('gameQuestions');
+  for (let i = 0; i < questions.length; i++) {
+  currentQuestionIndex += Math.floor(Math.random()+5)
+  } return; currentQuestionIndex 
+
+  questions.indexOf()
+
+  forNextQuestion()
+
 }
 
 
-//This is a function for the next question - what happens when we click next 
 function forNextQuestion() {
+  //resetQuestion()
+displayQuestion(shuffledQuestions[currentQuestionIndex]);
 
- displayQuestion(shuffledQuestions[currentQuestionIndex])
+//nextButton.classList.remove('hide') 
 
 }
 
 function displayQuestion(question) {
 
-  questionElement.innerText = gameQuestions.question
+ questionEl.innerText = questions.question
+ 
+ /* questions.answers.forEach(answers => {
+  
+  let button = document.createElement('button')
 
+  button.innerText = answers.text
+  button.classList.add('btn')
+
+  if (answer.correct) {
+    button.dataset.correct = answers.correct
+  } 
+
+  button.addEventListener('click', selectAnswer)
+
+  answer.buttonElement.appendChild(button)
+ })
+  //console.log(questions.question);
+ // questionEl.text = gameQuestions.question
+*/ 
 
 } 
 
 
-let gameQuestions = [
+const questions = [
   {
     question:"What was the name of Scooby-Doo's original TV series?",
     answers: [
@@ -49,7 +74,7 @@ let gameQuestions = [
       {text: 'The Scooby-Doo Show', correct:false },
       {text: 'Scooby Doooooo', correct: false }
     ]
-  } /
+  },
   {
     question:"What kind of dog is Scooby Doo?",
     answers: [
@@ -76,7 +101,7 @@ let gameQuestions = [
       {text: 'I get a kick out of you', correct:false },
       {text: 'My Funny Valentine', correct: false }
     ]
-  }, 
+  },
   {
     question:"What color is Daphne's dress",
     answers: [
@@ -85,30 +110,24 @@ let gameQuestions = [
       {text: 'orange', correct:false },
       {text: 'pink', correct: false }
     ]
-  }, 
+  },
 ]
 
-
-/*function shuffleQuestions () {
-for (var i =gameQuestions.length, i > 0; i++)
-  game.Questions(Math.random() - .5)
-
-}*/ 
 
 
 
 /* Timer Function 
 // Selects element by class
-var timeEl = document.querySelector("timer");
+let timeEl = document.querySelector("timer");
 
 // Selects element by id
-var timerAppend = document.getElementById(".timer-placement");
+let timerAppend = document.getElementById(".timer-placement");
 
-var secondsLeft = 30;
+let secondsLeft = 30;
 
 function setTime() {
-  // Sets interval in variable
-  var timerInterval = setInterval(function() {
+  // Sets interval in letiable
+  let timerInterval = setInterval(function() {
     secondsLeft--;
     timeEl.textContent = secondsLeft + "Second's Left ";
 
