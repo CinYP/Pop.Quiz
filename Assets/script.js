@@ -1,51 +1,46 @@
+//DOM Elements 
 var startButton = document.getElementById('start-button');
 var nextButton = document.querySelector('nxt-btn');
 var questionContainerEl = document.getElementById('question-container');
-const gameQuestions = [
-  {
-    question:"What was the name of Scooby-Doo's original TV series?",
-    answers: [
-      {text: 'Scooby-Doo, Where Are You', correct: true },
-      {text: 'Mystery Incorporated', correct: false }, 
-      {text: 'The Scooby-Doo Show', correct:false },
-      {text: 'Scooby Doooooo', correct: false }
-    ]
-  }
-]
+var answerButtonsEl = document.getElementById('answer-buttons')
+var questionEl = document.getElementById('question')
+
+let shuffledQuestions, currentQuestionIndex 
 
 //This is the event listener for the start button 
 startButton.addEventListener('click', startGame)
 
+
 //This function will start the game 
 function startGame() {
-//console.log('Test');
-//Testing to see if the event listener is invoking our function
 
 startButton.classList.add('hide')
-//hiding the start button when the game starts bc we no longer need it
 questionContainerEl.classList.remove('hide')
-//showing the questions that to start the game 
+
+shuffledQuestions = gameQuestions.sort(() => Math.random() - .5)
+currentQuestionIndex = 0
 
 forNextQuestion()
-//this will show the trivia questions 
-
+console.log('gameQuestions');
 }
 
-
-
-
-//This is a function for selecting the user to select an answer 
-function selectingAnswer() {
-
-}
 
 //This is a function for the next question - what happens when we click next 
 function forNextQuestion() {
 
+ displayQuestion(shuffledQuestions[currentQuestionIndex])
+
 }
 
+function displayQuestion(question) {
 
-let questions = [
+  questionElement.innerText = gameQuestions.question
+
+
+} 
+
+
+let gameQuestions = [
   {
     question:"What was the name of Scooby-Doo's original TV series?",
     answers: [
@@ -54,7 +49,7 @@ let questions = [
       {text: 'The Scooby-Doo Show', correct:false },
       {text: 'Scooby Doooooo', correct: false }
     ]
-  }, 
+  } /
   {
     question:"What kind of dog is Scooby Doo?",
     answers: [
@@ -94,7 +89,11 @@ let questions = [
 ]
 
 
+/*function shuffleQuestions () {
+for (var i =gameQuestions.length, i > 0; i++)
+  game.Questions(Math.random() - .5)
 
+}*/ 
 
 
 
