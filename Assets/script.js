@@ -6,65 +6,6 @@ let answerButtonsEl = document.getElementById('answer-buttons');
 let questionEl = document.getElementById('question');
 let timeEl = document.querySelector("timer");
 
-
-//This is the event listener for the start button 
-startButton.addEventListener('click', startGame)
-
-
-//This function will start the game 
-function startGame(event) {
-
-startButton.classList.add('hide')
-questionContainerEl.classList.remove('hide')
-
- let shuffledQuestions = questions.sort()
- let currentQuestionIndex = ""; 
-
-  for (let i = 0; i < questions.length; i++) {
-  currentQuestionIndex += Math.floor(Math.random()+5)
-  } return; currentQuestionIndex 
-
-  questions.indexOf()
-
-  forNextQuestion()
-
-}
-
-
-function forNextQuestion() {
-  //resetQuestion()
-displayQuestion(shuffledQuestions[currentQuestionIndex]);
-
-//nextButton.classList.remove('hide') 
-
-}
-
-function displayQuestion(question) {
-
- questionEl.innerText = questions.question
- 
- /* questions.answers.forEach(answers => {
-  
-  let button = document.createElement('button')
-
-  button.innerText = answers.text
-  button.classList.add('btn')
-
-  if (answer.correct) {
-    button.dataset.correct = answers.correct
-  } 
-
-  button.addEventListener('click', selectAnswer)
-
-  answer.buttonElement.appendChild(button)
- })
-  //console.log(questions.question);
- // questionEl.text = gameQuestions.question
-*/ 
-
-} 
-
-
 const questions = [
   {
     question:"What was the name of Scooby-Doo's original TV series?",
@@ -113,36 +54,66 @@ const questions = [
   },
 ]
 
+let shuffledQuestions = questions.sort()
+let currentQuestionIndex = '';
+
+//This is the event listener for the start button 
+startButton.addEventListener('click', startGame)
+
+
+//This function will start the game 
+function startGame(event) {
+
+startButton.classList.add('hide')
+questionContainerEl.classList.remove('hide')
 
 
 
-/* Timer Function 
-// Selects element by class
-let timeEl = document.querySelector("timer");
+function generateRandomIndex() {
+  for (let i = 0; i < questions.length; i++) {
+    currentQuestionIndex += Math.floor(Math.random()+5)
 
-// Selects element by id
-let timerAppend = document.getElementById(".timer-placement");
+    return currentQuestionIndex;
+  }}
 
-let secondsLeft = 30;
+  generateRandomIndex()
 
-function setTime() {
-  // Sets interval in letiable
-  let timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + "Second's Left ";
+  questions.indexOf()
 
-    if(secondsLeft === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      // Calls function to create and append image
-      alert("Time's Up!");
-      //change this
-    }
-
-  }, 1000);
-
-  timerAppend.appendChild(setTime);
+  forNextQuestion()
 }
 
-setTime();
-*/ 
+function forNextQuestion() {
+  //resetQuestion()
+  displayQuestion(shuffledQuestions[currentQuestionIndex]);
+
+
+  function displayQuestion(question) {
+
+    questionEl.innerHTML = questions.question
+    
+   
+   } 
+
+}
+
+
+
+/* questions.answers.forEach(answers => {
+     
+     let button = document.createElement('button')
+   
+     button.innerText = answers.text
+     button.classList.add('btn')
+   
+     if (answer.correct) {
+       button.dataset.correct = answers.correct
+     } 
+   
+     button.addEventListener('click', selectAnswer)
+   
+     answer.buttonElement.appendChild(button)
+    })
+     //console.log(questions.question);
+    // questionEl.text = gameQuestions.question
+   */ 
