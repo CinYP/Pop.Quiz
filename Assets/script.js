@@ -16,10 +16,10 @@ const questions = [
   {
     question:"What was the name of Scooby-Doo's original TV series?",
     answers: [
-      {text: "Scooby-Doo, Where Are You", correct: true },
-      {text: "Mystery Incorporated", correct: false }, 
+      {text: "Scooby-Doo, Where Are You", correct:true },
+      {text: "Mystery Incorporated", correct:false }, 
       {text: "The Scooby-Doo Show", correct:false },
-      {text: "Scooby Doooooo", correct: false }
+      {text: "Scooby Doooooo", correct:false }
     ]
   },
   {
@@ -94,31 +94,6 @@ function forNextQuestion() {
   //resetQuestion()
   displayQuestion(shuffledQuestions[currentQuestionIndex]);
   //console.log(currentQuestionIndex);
-  
-  generateButtonText()
-  
-  answerButtonsEl.addEventListener('click', selectAnswer)
-
-  //creating new buttons for all of the answer choices 
-function generateButtonText(){
-
-  answerButtonOne.innerHTML =questions[currentQuestionIndex].answers[0].text
-  answerButtonTwo.innerHTML =questions[currentQuestionIndex].answers[1].text
-  answerButtonThree.innerHTML =questions[currentQuestionIndex].answers[2].text
-  answerButtonFour.innerHTML =questions[currentQuestionIndex].answers[3].text
-  
-  answerButtonOne.classList.add('btn')
-  answerButtonTwo.classList.add('btn')
-  answerButtonThree.classList.add('btn')
-  answerButtonThree.classList.add('btn')
-
-  answerButtonOne.answerButtonsEl.appendChild(button)
-  answerButtonTwo.answerButtonsEl.appendChild(button)
-  answerButtonThree.answerButtonsEl.appendChild(button)
-  answerButtonFour.answerButtonsEl.appendChild(button)
-  
-}  
-
 
   function displayQuestion(question) {
 
@@ -126,11 +101,33 @@ function generateButtonText(){
    
    } 
 
+  generateButtonText()
+  
+  answerButtonsEl.addEventListener('click', selectAnswer)
+
+  //creating new buttons for all of the answer choices 
+  function generateButtonText(){
+
+  answerButtonOne.innerHTML =questions[currentQuestionIndex].answers[0].text
+  answerButtonTwo.innerHTML =questions[currentQuestionIndex].answers[1].text
+  answerButtonThree.innerHTML =questions[currentQuestionIndex].answers[2].text
+  answerButtonFour.innerHTML =questions[currentQuestionIndex].answers[3].text
+  }  
+
+
+ function selectAnswer (event){
+  console.log(answerButtonsEl.dataset)
+  /* if (questions.answers.correct == true) {
+      console.log("correct");
+  } else {
+    console.log("try again")
+  } */
+
+}  
+
 }
 
-function selectAnswer (){
-  console.log("it works so far");
-}
+
 
 /*if (answers.correct) {
     button.dataset.correct =answer.correct
