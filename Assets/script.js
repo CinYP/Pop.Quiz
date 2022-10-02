@@ -115,17 +115,40 @@ function forNextQuestion() {
   }  
 
 
- function selectAnswer (event){
-  console.log(answerButtonsEl.dataset)
-  /* if (questions.answers.correct == true) {
+ function selectAnswer (e){
+  let answerSelection = e.target.textContent
+
+  let rightAnswer = questions.find(questions => answer.correct === true)
+
+  //console.log(answerSelection)
+  /*
+  //console.log(answerButtonsEl.dataset['correct'])
+  if ( answerSelection === questions[currentQuestionIndex].answers[true]){
+  console.log("it works up to this point");
+  } else {
+    console.log("try again");
+ }
+*/
+
+ console.log(rightAnswer)
+
+
+
+  /* function btnClick(e) {
+    let date = e.target.textContent;
+    // do something with it
+    console.log(date);
+    
+    
+    if (questions.answers.correct == true) {
       console.log("correct");
   } else {
     console.log("try again")
   } */
 
-}  
+}  }
 
-}
+//}//
 
 
 
