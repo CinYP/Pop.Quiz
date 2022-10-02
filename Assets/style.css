@@ -92,3 +92,12 @@ margin: 5px;
 .hide {
     display:none; 
 }
+
+#timer{
+color: var(--green);
+display:flex;
+justify-content: center;
+font-size: 75%;
+margin: 5px auto;
+padding: 15px;
+}

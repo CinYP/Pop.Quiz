@@ -8,8 +8,8 @@ let answerButtonOne = document.getElementById("button-one")
 let answerButtonTwo = document.getElementById("button-two")
 let answerButtonThree = document.getElementById("button-three")
 let answerButtonFour = document.getElementById("button-four")
-
-//let timeEl = document.querySelector("timer");
+let timeEl = document.getElementById("timer");
+var secondsLeft = 45;
 
 
 const questions = [
@@ -64,14 +64,15 @@ let shuffledQuestions = questions.sort()
 let currentQuestionIndex = 0;
 
 //This is the event listener for the start button 
-startButton.addEventListener('click', startGame)
-
+startButton.addEventListener('click', startGame) 
 
 //This function will start the game 
 function startGame(event) {
 
 startButton.classList.add('hide')
 questionContainerEl.classList.remove('hide')
+timeEl.classList.remove('hide')
+
 
 
 
@@ -95,6 +96,8 @@ function forNextQuestion() {
   displayQuestion(shuffledQuestions[currentQuestionIndex]);
   //console.log(currentQuestionIndex);
 
+
+
   function displayQuestion(question) {
 
     questionEl.innerHTML = questions[currentQuestionIndex].question
@@ -114,48 +117,38 @@ function forNextQuestion() {
   answerButtonFour.innerHTML =questions[currentQuestionIndex].answers[3].text
   }  
 
+}
 
  function selectAnswer (event){
-  let answerSelection = event 
+  let answerSelection = event.target.getAttribute("correct")
 
   console.log(questions[currentQuestionIndex].answers);
   console.log(answerSelection);
+
+  nextButton.classList.remove('hide')
+  nextButton.addEventListener('click', resetQuestion)
+
   
-  //let rightAnswer = questions.find(questions => questions.answers === true)
+} 
 
+function resetQuestion(){
+  console.log("this resets the question");
+}
 
+function setTime() {
+  startGame()
+  // Sets interval in variable
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.innerHTML = secondsLeft + " seconds left to select an answer.";
 
-  //console.log(answerSelection)
-  /*
-  //console.log(answerButtonsEl.dataset['correct'])
-  if ( answerSelection === questions[currentQuestionIndex].answers[true]){
-  console.log("it works up to this point");
-  } else {
-    console.log("try again");
- }
-*/
+    if(secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      // Calls function to create and append image
+      //selectAnswer();
+    }
 
+  }, 45000);
+}
 
-
-  /* function btnClick(e) {
-    let date = e.target.textContent;
-    // do something with it
-    console.log(date);
-    
-    
-    if (questions.answers.correct == true) {
-      console.log("correct");
-  } else {
-    console.log("try again")
-  } */
-
-}  }
-
-//}//
-
-
-
-/*if (answers.correct) {
-    button.dataset.correct =answer.correct
-  }
-  */
