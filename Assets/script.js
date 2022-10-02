@@ -115,10 +115,15 @@ function forNextQuestion() {
   }  
 
 
- function selectAnswer (e){
-  let answerSelection = e.target.textContent
+ function selectAnswer (event){
+  let answerSelection = event 
 
-  let rightAnswer = questions.find(questions => answer.correct === true)
+  console.log(questions[currentQuestionIndex].answers);
+  console.log(answerSelection);
+  
+  //let rightAnswer = questions.find(questions => questions.answers === true)
+
+
 
   //console.log(answerSelection)
   /*
@@ -129,8 +134,6 @@ function forNextQuestion() {
     console.log("try again");
  }
 */
-
- console.log(rightAnswer)
 
 
 
