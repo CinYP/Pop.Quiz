@@ -75,7 +75,7 @@ questionContainerEl.classList.remove('hide')
 
 
 
-function () {
+function generateRandomIndex() {
   for (let i = 0; i < questions.length; i++) {
     currentQuestionIndex += Math.floor(Math.random()*3)
 
