@@ -9,7 +9,7 @@ let answerButtonTwo = document.getElementById("button-two")
 let answerButtonThree = document.getElementById("button-three")
 let answerButtonFour = document.getElementById("button-four")
 let timeEl = document.getElementById("timer");
-var secondsLeft = 45;
+let secondsLeft = 45;
 
 
 const questions = [
@@ -106,7 +106,11 @@ function forNextQuestion() {
 
   generateButtonText()
   
+  //answerButtonsEl.addEventListener('click', selectAnswer)
+
+   
   answerButtonsEl.addEventListener('click', selectAnswer)
+
 
   //creating new buttons for all of the answer choices 
   function generateButtonText(){
@@ -120,10 +124,21 @@ function forNextQuestion() {
 }
 
  function selectAnswer (event){
-  let answerSelection = event.target.getAttribute("correct")
+  //let answerSelection = event.target.getAttribute("data-correct")
+  const buttonAction = event.target
+  let buttonText = event.target.innerText 
+  let selectedAnswer = questions[currentQuestionIndex].answers.find(function(answer){
+    return answer.text === buttonText
+  })
 
-  console.log(questions[currentQuestionIndex].answers);
-  console.log(answerSelection);
+  if (selectedAnswer.correct === true){
+    buttonAction.classList.add('correct')
+  } else {
+    buttonAction.classList.add('wrong')
+  }
+
+  //console.log(questions[currentQuestionIndex].answers);
+  //console.log(answerSelection);
 
   nextButton.classList.remove('hide')
   nextButton.addEventListener('click', resetQuestion)

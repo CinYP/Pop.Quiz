@@ -62,7 +62,7 @@ margin: 25px 0;
 }
 
 .btn.correct {
-    background-color: var(--right);
+    background-color: var(--green);
     border: var(--right);
 }
 
